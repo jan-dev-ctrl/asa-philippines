@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ASA Philippines Foundation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green-dark: #0d3b2e;
+      --green-mid: #1a5c44;
+      --green-accent: #2d8c63;
+      --green-light: #4db88a;
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --gold: #c9a84c;
+      --text-dark: #0a2a1f;
+      --text-muted: #5a7a6e;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--green-dark);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(13, 59, 46, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(77,184,138,0.15);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--green-accent), var(--green-light));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: white;
+      letter-spacing: -1px;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .logo-sub {
+      font-size: 0.65rem;
+      color: var(--green-light);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--green-light);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-signin {
+      padding: 0.6rem 1.6rem;
+      border: 1.5px solid var(--green-light);
+      border-radius: 6px;
+      color: var(--green-light);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s;
+      letter-spacing: 0.03em;
+    }
+    .btn-signin:hover {
+      background: var(--green-light);
+      color: var(--green-dark);
+    }
+
+    .btn-primary {
+      padding: 0.6rem 1.6rem;
+      border: none;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--green-accent), var(--green-light));
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s;
+      box-shadow: 0 4px 14px rgba(77,184,138,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(77,184,138,0.45);
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 0 5%;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(45,140,99,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(77,184,138,0.1) 0%, transparent 60%),
+        var(--green-dark);
+    }
+
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(77,184,138,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(77,184,138,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(77,184,138,0.12);
+      border: 1px solid rgba(77,184,138,0.25);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      color: var(--green-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--green-light);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.4rem;
+      color: var(--white);
+    }
+    h1 span {
+      color: var(--green-light);
+      font-style: italic;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 2.4rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-hero-primary {
+      padding: 0.85rem 2.2rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--green-accent), var(--green-light));
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 6px 24px rgba(77,184,138,0.35);
+    }
+    .btn-hero-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(77,184,138,0.5);
+    }
+
+    .btn-hero-outline {
+      padding: 0.85rem 2.2rem;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      color: rgba(255,255,255,0.85);
+      background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .btn-hero-outline:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: white;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero-stats {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      animation: fadeUp 1s 0.3s ease both;
+      z-index: 2;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(77,184,138,0.2);
+      border-radius: 14px;
+      padding: 1.4rem 1.8rem;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s, border-color 0.3s;
+      min-width: 160px;
+    }
+    .stat-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(77,184,138,0.5);
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green-light);
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 0.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 5%; }
+
+    .section-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 560px;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(77,184,138,0.1);
+      border-bottom: 1px solid rgba(77,184,138,0.1);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card-main {
+      background: linear-gradient(135deg, var(--green-mid), var(--green-dark));
+      border: 1px solid rgba(77,184,138,0.25);
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card-main::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(77,184,138,0.15) 0%, transparent 70%);
+    }
+
+    .about-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-card-main h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .about-card-main p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .about-float-card {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--green-accent);
+      border-radius: 14px;
+      padding: 1.2rem 1.5rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .about-float-card span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.04em;
+    }
+
+    .about-points {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .point-dot {
+      flex-shrink: 0;
+      width: 36px; height: 36px;
+      background: rgba(77,184,138,0.15);
+      border: 1px solid rgba(77,184,138,0.3);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+
+    .point-text h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .point-text p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    /* ── SERVICES ── */
+    #services { }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(77,184,138,0.15);
+      border-radius: 18px;
+      padding: 2rem;
+      transition: all 0.35s;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--green-accent), var(--green-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+    .service-card:hover {
+      border-color: rgba(77,184,138,0.35);
+      transform: translateY(-5px);
+      background: rgba(77,184,138,0.06);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+    }
+
+    .service-card p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .service-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.3rem 0.8rem;
+      background: rgba(77,184,138,0.1);
+      border-radius: 20px;
+      font-size: 0.72rem;
+      color: var(--green-light);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FEEDBACK ── */
+    #feedback {
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid rgba(77,184,138,0.1);
+      border-bottom: 1px solid rgba(77,184,138,0.1);
+    }
+
+    .feedback-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+      align-items: start;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(77,184,138,0.15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      transition: border-color 0.3s;
+    }
+    .testimonial-card:hover { border-color: rgba(77,184,138,0.35); }
+
+    .stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .testimonial-card p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.65;
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .reviewer-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .reviewer-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .reviewer-role {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* Feedback Form */
+    .feedback-form-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(77,184,138,0.2);
+      border-radius: 20px;
+      padding: 2.5rem;
+    }
+
+    .feedback-form-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-form-box .sub {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.87rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(77,184,138,0.2);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.25s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--green-light);
+      background: rgba(77,184,138,0.07);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--green-dark); }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+    .rating-stars {
+      display: flex;
+      gap: 0.5rem;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .rating-stars span { transition: transform 0.2s; }
+    .rating-stars span:hover { transform: scale(1.2); }
+
+    .btn-submit {
+      width: 100%;
+      padding: 0.95rem;
+      margin-top: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--green-accent), var(--green-light));
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 6px 20px rgba(77,184,138,0.3);
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(77,184,138,0.45);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,0.3);
+      border-top: 1px solid rgba(77,184,138,0.1);
+      padding: 3.5rem 5% 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.84rem;
+      line-height: 1.7;
+      margin-top: 1rem;
+      font-weight: 300;
+    }
+
+    .footer-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.6rem; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.25s;
+    }
+    .footer-col ul li a:hover { color: var(--green-light); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ── MOBILE MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-stats { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .feedback-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.2rem; }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">ASA</div>
+      <div>
+        <div class="logo-text">ASA Philippines</div>
+        <div class="logo-sub">Foundation Inc.</div>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#feedback">Feedback</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="signin.html" class="btn-signin">Sign In</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-lines"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">Empowering Communities Since 1988</div>
+      <h1>Financial <span>Freedom</span> Starts Here</h1>
+      <p class="hero-desc">ASA Philippines Foundation provides accessible microfinance services and financial solutions to empower low-income families across the Philippines.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-hero-primary">Explore Services</a>
+        <a href="#about" class="btn-hero-outline">Learn More</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-number">2M+</div>
+        <div class="stat-label">Active Clients</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">₱48B</div>
+        <div class="stat-label">Loans Released</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">600+</div>
+        <div class="stat-label">Branch Offices</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="reveal">
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">Built on Trust,<br/>Driven by Purpose</h2>
+    </div>
+
+    <div class="about-grid reveal">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <div class="about-icon">🏛️</div>
+          <h3>Our Mission</h3>
+          <p>To provide financial services to the poorest of the poor, empowering them to improve their quality of life through responsible lending, savings, and financial literacy programs across the Philippines.</p>
+        </div>
+        <div class="about-float-card">
+          35+
+          <span>Years of Service</span>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-desc" style="margin-bottom: 0">We believe every Filipino deserves access to financial tools that can transform their lives. Since 1988, ASA Philippines has been at the forefront of microfinance, reaching the most underserved communities nationwide.</p>
+
+        <div class="about-points">
+          <div class="about-point">
+            <div class="point-dot">🎯</div>
+            <div class="point-text">
+              <h4>Poverty Alleviation</h4>
+              <p>Targeted programs designed specifically for low-income households and micro-entrepreneurs.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="point-dot">📚</div>
+            <div class="point-text">
+              <h4>Financial Literacy</h4>
+              <p>We educate clients on responsible borrowing, savings habits, and sustainable financial planning.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="point-dot">🤝</div>
+            <div class="point-text">
+              <h4>Community Development</h4>
+              <p>Building stronger communities through inclusive economic participation and social empowerment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header reveal">
+      <div>
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-title">Our Core Services</h2>
+        <p class="section-desc">Comprehensive financial solutions tailored for Filipino families and small business owners.</p>
+      </div>
+      <a href="signin.html" class="btn-primary" style="white-space:nowrap">Apply for a Loan →</a>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">💰</div>
+        <h3>Micro Loans</h3>
+        <p>Fast, affordable loans for small businesses and family needs. Flexible terms with competitive interest rates suited for every borrower.</p>
+        <span class="service-tag">Most Popular</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏠</div>
+        <h3>Housing Loans</h3>
+        <p>Make your dream home a reality with our housing loan program designed for low-income families across the Philippines.</p>
+        <span class="service-tag">Home Improvement</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏥</div>
+        <h3>Emergency Loans</h3>
+        <p>Quick-release emergency funds for medical, calamity, or urgent financial needs — processed within 24 to 48 hours.</p>
+        <span class="service-tag">Fast Release</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🌾</div>
+        <h3>Agricultural Loans</h3>
+        <p>Support for farmers and fisherfolk with loans for seeds, equipment, and operational costs to boost productivity.</p>
+        <span class="service-tag">Rural Support</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📈</div>
+        <h3>Business Development</h3>
+        <p>Grow your micro-enterprise with tailored capital loans and free financial coaching from our experienced officers.</p>
+        <span class="service-tag">Livelihood</span>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎓</div>
+        <h3>Education Loans</h3>
+        <p>Invest in your children's future with our education loan program covering tuition, supplies, and school expenses.</p>
+        <span class="service-tag">For Students</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEEDBACK -->
+  <section id="feedback">
+    <div class="reveal">
+      <p class="section-label">Community Voice</p>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-desc">Real stories from real clients who have experienced the ASA difference.</p>
+    </div>
+
+    <div class="feedback-layout">
+      <div class="testimonials reveal">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Thanks to ASA Philippines, I was able to expand my sari-sari store. The loan process was very simple and the staff was very helpful throughout."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #2d8c63, #4db88a)">M</div>
+            <div>
+              <div class="reviewer-name">Maria Santos</div>
+              <div class="reviewer-role">Small Business Owner, Quezon City</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Ang bilis ng proseso at ang bait ng mga staff. Nakapag-repair na ako ng bahay namin dahil sa ASA. Highly recommended po!"</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #1a5c44, #2d8c63)">R</div>
+            <div>
+              <div class="reviewer-name">Rodrigo Dela Cruz</div>
+              <div class="reviewer-role">Farmer, Bulacan</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="stars">★★★★☆</div>
+          <p>"The financial literacy seminars opened my eyes to better money management. I now save regularly and my small business is growing steadily."</p>
+          <div class="reviewer">
+            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #c9a84c, #e8c96d)">A</div>
+            <div>
+              <div class="reviewer-name">Ana Reyes</div>
+              <div class="reviewer-role">Market Vendor, Davao</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Form -->
+      <div class="feedback-form-box reveal">
+        <h3>Share Your Experience</h3>
+        <p class="sub">Your feedback helps us serve you better.</p>
+
+        <form action="submit_feedback.php" method="POST">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="name" placeholder="Enter your full name" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" placeholder="yourname@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Service Used</label>
+            <select name="service">
+              <option value="">-- Select a service --</option>
+              <option>Micro Loan</option>
+              <option>Housing Loan</option>
+              <option>Emergency Loan</option>
+              <option>Agricultural Loan</option>
+              <option>Business Development</option>
+              <option>Education Loan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Rating</label>
+            <div class="rating-stars" id="stars">
+              <span data-val="1">☆</span>
+              <span data-val="2">☆</span>
+              <span data-val="3">☆</span>
+              <span data-val="4">☆</span>
+              <span data-val="5">☆</span>
+            </div>
+            <input type="hidden" name="rating" id="ratingValue" value="0" />
+          </div>
+          <div class="form-group">
+            <label>Your Feedback</label>
+            <textarea name="message" placeholder="Tell us about your experience with ASA Philippines..." required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Submit Feedback</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">ASA</div>
+          <div>
+            <div class="logo-text">ASA Philippines</div>
+            <div class="logo-sub">Foundation Inc.</div>
+          </div>
+        </div>
+        <p>Empowering Filipino communities through inclusive microfinance and financial literacy since 1988.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Our Services</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">Micro Loans</a></li>
+          <li><a href="#">Housing Loans</a></li>
+          <li><a href="#">Emergency Loans</a></li>
+          <li><a href="#">Agricultural Loans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">📍 Taal, Bocaue, Bulacan, Philippines</a></li>
+          <li><a href="#">📞 +63 922 897 7621</a></li>
+          <li><a href="#">✉️ info@asaphil.org</a></li>
+          <li><a href="signin.html">🔐 Client Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ASA Philippines Foundation Inc. All rights reserved.</p>
+      <p style="color:rgba(255,255,255,0.2)">Privacy Policy · Terms of Service</p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => {
+        if (el.isIntersecting) {
+          el.target.classList.add('visible');
+          observer.unobserve(el.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Star rating
+    const stars = document.querySelectorAll('#stars span');
+    let selected = 0;
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selected = +star.dataset.val;
+        document.getElementById('ratingValue').value = selected;
+        stars.forEach((s, i) => s.textContent = i < selected ? '★' : '☆');
+        stars.forEach((s, i) => s.style.color = i < selected ? '#c9a84c' : 'inherit');
+      });
+      star.addEventListener('mouseover', () => {
+        const val = +star.dataset.val;
+        stars.forEach((s, i) => s.textContent = i < val ? '★' : '☆');
+      });
+      star.addEventListener('mouseout', () => {
+        stars.forEach((s, i) => s.textContent = i < selected ? '★' : '☆');
+      });
+    });
+
+    // Mobile menu toggle
+    function toggleMenu(btn) {
+      btn.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

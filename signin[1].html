@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Account</title>
+    <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0a3d2b;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 380px;
+    border-top: 5px solid #0a3d2b;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0a3d2b;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  h1::before {
+    content: 'ASA Philippines Foundation';
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: #5a8a72;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #e0ede7;
+    margin: 0 0 1.25rem;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2d6b4f;
+    margin-bottom: 4px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 9px 12px;
+    margin-bottom: 14px;
+    border: 1.5px solid #c8ddd5;
+    border-radius: 7px;
+    font-size: 14px;
+    color: #1a3d2b;
+    background: #f7fcf9;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus {
+    border-color: #0a3d2b;
+    background: #fff;
+  }
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #0a3d2b;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  input[type="submit"]:hover {
+    background: #0f5c3f;
+  }
+  p {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 13px;
+    color: #7a9e8e;
+  }
+  p a {
+    color: #0a3d2b;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  p a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+    <form method="POST" action="signincheck.php">
+        <h1>Create an Account</h1>
+        <hr>
+        <label for="fullname">Full Name:</label>
+        <input type="text" name="fullname" id="fullname" required>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <label for="address">Address:</label>
+        <input type="text" name="address" id="address" placeholder="Street, Barangay, City, Province" required>
+        <hr>
+        <input type="submit" value="Register">
+
+        <!-- Terms & Conditions Checkbox -->
+        <div style="margin: 12px 0 4px;">
+            <label style="display:flex; align-items:flex-start; gap:8px; font-size:12px; color:#2d6b4f; font-weight:400; cursor:pointer;">
+                <input type="checkbox" id="terms_check" style="margin-top:2px; width:auto; margin-bottom:0; accent-color:#0a3d2b;" required>
+                I agree to the
+                <span onclick="document.getElementById('terms_modal').style.display='flex'"
+                    style="color:#0a3d2b; font-weight:600; cursor:pointer; text-decoration:underline;">
+                    Terms &amp; Conditions
+                </span>
+            </label>
+        </div>
+
+        <p>
+            Already have an account?
+            <a href="Login.html">Login here</a>
+        </p>
+    </form>
+
+<!-- Terms & Conditions Modal -->
+<div id="terms_modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); align-items:center; justify-content:center; z-index:999;">
+    <div style="background:#fff; border-radius:12px; padding:2rem; max-width:480px; width:90%; max-height:80vh; overflow-y:auto; position:relative;">
+        <h2 style="font-size:16px; font-weight:600; color:#0a3d2b; margin-bottom:4px;">Terms &amp; Conditions</h2>
+        <p style="font-size:11px; color:#5a8a72; margin-bottom:1rem;">ASA Philippines Foundation, Inc.</p>
+
+        <p style="font-size:13px; color:#333; line-height:1.7; margin-bottom:1rem;">
+            By creating an account and applying for a loan through this portal, you agree to the following terms:
+        </p>
+
+        <h3 style="font-size:13px; font-weight:600; color:#0a3d2b; margin-bottom:4px;">1. Eligibility</h3>
+        <p style="font-size:13px; color:#555; line-height:1.7; margin-bottom:1rem;">
+            You must be a registered member of ASA Philippines Foundation to apply for a loan. False information provided during registration will result in immediate disqualification.
+        </p>
+
+        <h3 style="font-size:13px; font-weight:600; color:#0a3d2b; margin-bottom:4px;">2. Loan Application</h3>
+        <p style="font-size:13px; color:#555; line-height:1.7; margin-bottom:1rem;">
+            All loan applications are subject to review and approval by ASA Philippines Foundation administration. Submission does not guarantee approval.
+        </p>
+
+        <h3 style="font-size:13px; font-weight:600; color:#0a3d2b; margin-bottom:4px;">3. Repayment</h3>
+        <p style="font-size:13px; color:#555; line-height:1.7; margin-bottom:1rem;">
+            Approved loans must be repaid within the agreed duration. Failure to repay on time may result in penalties and suspension of future loan privileges.
+        </p>
+
+        <h3 style="font-size:13px; font-weight:600; color:#0a3d2b; margin-bottom:4px;">4. Privacy</h3>
+        <p style="font-size:13px; color:#555; line-height:1.7; margin-bottom:1rem;">
+            Your personal information will be kept confidential and used solely for the purposes of loan processing in accordance with the Data Privacy Act of 2012 (RA 10173).
+        </p>
+
+        <h3 style="font-size:13px; font-weight:600; color:#0a3d2b; margin-bottom:4px;">5. Account Responsibility</h3>
+        <p style="font-size:13px; color:#555; line-height:1.7; margin-bottom:1.5rem;">
+            You are responsible for maintaining the confidentiality of your account credentials. Any activity under your account is your sole responsibility.
+        </p>
+
+        <button onclick="
+            document.getElementById('terms_check').checked=true;
+            document.getElementById('terms_modal').style.display='none';"
+            style="width:100%; padding:10px; background:#0a3d2b; color:#fff; border:none; border-radius:7px; font-size:14px; font-weight:600; cursor:pointer;">
+            I Agree
+        </button>
+        <button onclick="document.getElementById('terms_modal').style.display='none';"
+            style="width:100%; padding:10px; background:#f0f0f0; color:#555; border:none; border-radius:7px; font-size:14px; font-weight:600; cursor:pointer; margin-top:8px;">
+            Close
+        </button>
+    </div>
+</div>
+
+</body>
+</html>

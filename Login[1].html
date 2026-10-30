@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Account</title>
+   <style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #0a3d2b;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  body > div {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 380px;
+    border-top: 5px solid #0a3d2b;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0a3d2b;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  h1::before {
+    content: 'ASA Philippines Foundation';
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: #5a8a72;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  form {
+    margin-top: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #2d6b4f;
+  }
+  form br { display: none; }
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    display: block;
+    width: 100%;
+    padding: 9px 12px;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    border: 1.5px solid #c8ddd5;
+    border-radius: 7px;
+    font-size: 14px;
+    color: #1a3d2b;
+    background: #f7fcf9;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  form input[type="text"]:focus,
+  form input[type="email"]:focus,
+  form input[type="password"]:focus {
+    border-color: #0a3d2b;
+    background: #fff;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid #e0ede7;
+    margin: 6px 0 16px;
+  }
+  form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #0a3d2b;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: background 0.2s;
+  }
+  form input[type="submit"]:hover {
+    background: #0f5c3f;
+  }
+  p {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 13px;
+    color: #7a9e8e;
+  }
+  p a {
+    color: #0a3d2b;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  p a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div>
+        <h1>Welcome Back!</h1>
+    <form method="POST" action="Logincheck.php">
+            Email:
+            <input type="email" name="email" required><br><br>
+            Password:
+            <input type="password" name="password" required><br>
+            <hr>
+            <input type="submit" name="login" value="Login">
+        </form>
+        <!-- ADDED: forgot password link -->
+        <p style="margin-top:0.75rem;">
+            <a href="forgot_password.php">Forgot your password?</a>
+        </p>
+        <p>
+            New user?
+            <a href="signin.html">Create an account here</a>
+        </p>
+    </div>
+</body>
+</html>
